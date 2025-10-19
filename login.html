@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{% if lang=='ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if lang=='ar' %}تسجيل الدخول{% else %}Login{% endif %}</title>
+  <style>
+    /* --- Reset & Body --- */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* --- Login Container --- */
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      text-align: inherit; /* works for RTL too */
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background: #667eea;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-container button:hover {
+      background: #5a67d8;
+    }
+
+    .error {
+      background: #ffe5e5;
+      color: #ff3333;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    /* --- Language Switch --- */
+    .lang-switch {
+      margin-top: 15px;
+    }
+
+    .lang-switch a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 5px;
+    }
+
+    .lang-switch a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>{% if lang=='ar' %}تسجيل الدخول{% else %}Login{% endif %}</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="error">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <input type="email" name="email" placeholder="{% if lang=='ar' %}البريد الإلكتروني{% else %}Email{% endif %}" required>
+      <input type="password" name="password" placeholder="{% if lang=='ar' %}كلمة المرور{% else %}Password{% endif %}" required>
+      <button type="submit">{% if lang=='ar' %}تسجيل الدخول{% else %}Login{% endif %}</button>
+    </form>
+
+    <div class="lang-switch">
+      <a href="{{ url_for('login', lang='en') }}">English</a> |
+      <a href="{{ url_for('login', lang='ar') }}">عربي</a>
+    </div>
+  </div>
+</body>
+</html>

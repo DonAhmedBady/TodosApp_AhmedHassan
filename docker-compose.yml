@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.next
+    ports:
+      - "3000:3000"
+    depends_on:
+      - python
+      - jsonserver
+
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "3002:3002"
+
+  jsonserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.json
+    ports:
+      - "3001:3001"

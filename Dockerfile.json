@@ -1,0 +1,7 @@
+# JSON Server for todos
+FROM node:18-alpine
+WORKDIR /app
+RUN npm install -g json-server
+COPY data/todos.json ./data/todos.json
+EXPOSE 3001
+CMD ["json-server", "--watch", "data/todos.json", "--port", "3001"]

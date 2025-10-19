@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": "ed2ab424-c08e-4c33-8901-5d761dc3ce3b",
+      "text": "Learn English"
+    },
+    {
+      "id": "c34b8791-ee69-44f5-ab4c-35aa571cf0cb",
+      "text": "Learn History"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "donahmedbady@gmail.com",
+      "password": "$2a$10$yLwF0xZqYoZmvQ1Dk3fWWeKmF0/5A0l8eL7Y2OZxY4HfIowGj1Vta"
+    }
+  ]
+}
